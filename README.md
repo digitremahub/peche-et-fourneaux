@@ -9,7 +9,7 @@ Construit avec [Astro](https://astro.build) — génère des pages statiques (HT
 1. Crée un compte gratuit sur [vercel.com](https://vercel.com) avec ton compte GitHub.
 2. Clique sur **"Add New… → Project"**, choisis ce dépôt GitHub.
 3. Vercel détecte automatiquement Astro — laisse les réglages par défaut, clique sur **Deploy**.
-4. Ton site est en ligne en 1 à 2 minutes, sur une adresse du type `gino-fish-and-cook.vercel.app`.
+4. Ton site est en ligne en 1 à 2 minutes, sur une adresse du type `ginofishandcook.vercel.app`.
 
 Après ça, **chaque fois que tu modifies un fichier et que tu le pousses sur GitHub (`git push`), le site se met à jour automatiquement.** Tu n'as jamais besoin de refaire cette étape.
 
