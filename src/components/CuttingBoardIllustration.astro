@@ -1,0 +1,19 @@
+---
+// Illustration planche à découper + couteau + herbes, style gravure simple.
+interface Props {
+  class?: string;
+}
+const { class: klass = '' } = Astro.props;
+---
+<svg class={klass} viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration d'une planche à découper">
+  <rect x="40" y="60" width="200" height="110" rx="14" stroke="var(--color-wood-dark)" stroke-width="4"/>
+  <circle cx="230" cy="115" r="9" stroke="var(--color-wood-dark)" stroke-width="3"/>
+  <path d="M70 150c30-30 80-48 130-40" stroke="var(--color-wood)" stroke-width="2" opacity="0.6"/>
+  <path d="M120 60l60 90" stroke="var(--color-blue)" stroke-width="4" stroke-linecap="round" transform="rotate(-8 150 105)"/>
+  <path d="M150 45l90 15-16 18-90-13z" stroke="var(--color-deep-blue)" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <g stroke="var(--color-green)" stroke-width="3" stroke-linecap="round">
+    <path d="M255 150c-4-16 4-30 16-36"/>
+    <path d="M262 150c2-14 12-24 24-26"/>
+    <path d="M270 152c8-10 20-14 30-12"/>
+  </g>
+</svg>

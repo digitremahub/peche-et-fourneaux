@@ -1,0 +1,28 @@
+---
+const nav = [
+  { href: '/', label: 'Accueil' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/guide/', label: 'Le Guide' },
+];
+const current = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M4 20c8-11 22-14 32-8 5 3 9 7 12 8-3 1-7 5-12 8-10 6-24 3-32-8z"
+              fill="none" stroke="var(--color-deep-blue)" stroke-width="3.2"/>
+        <circle cx="14" cy="18" r="1.8" fill="var(--color-deep-blue)"/>
+      </svg>
+      Pêche &amp; Fourneaux
+    </a>
+    <nav class="nav">
+      <div class="nav-links nav">
+        {nav.map((item) => (
+          <a href={item.href} style={current === item.href ? 'color:var(--color-deep-blue);font-weight:700;' : ''}>{item.label}</a>
+        ))}
+      </div>
+      <a href="/guide/" class="btn btn--primary" style="padding:10px 20px;font-size:0.88rem;">Le Guide numérique</a>
+    </nav>
+  </div>
+</header>

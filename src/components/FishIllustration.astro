@@ -1,0 +1,17 @@
+---
+// Illustration de poisson en ligne, style gravure simple.
+interface Props {
+  class?: string;
+}
+const { class: klass = '' } = Astro.props;
+---
+<svg class={klass} viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration d'un poisson">
+  <path d="M20 100c40-55 110-70 160-40 25 15 45 35 60 40-15 5-35 25-60 40-50 30-120 15-160-40z"
+        stroke="var(--color-deep-blue)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M240 100l40-28v56l-40-28z" stroke="var(--color-deep-blue)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M110 70c8-18 26-26 40-24" stroke="var(--color-blue)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M100 130c8 16 26 22 40 20" stroke="var(--color-blue)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M60 92c18-4 34-4 50 2M55 108c18 4 34 4 50-2" stroke="var(--color-green)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="70" cy="92" r="5" fill="var(--color-deep-blue)"/>
+  <path d="M170 60c10-14 22-20 34-18M175 140c10 14 22 20 34 18" stroke="var(--color-deep-blue)" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FishIllustration from '../components/FishIllustration.astro';
+import CuttingBoardIllustration from '../components/CuttingBoardIllustration.astro';
+import Waves from '../components/Waves.astro';
+
+const posts = await Astro.glob('./blog/*.md');
+const latestPosts = posts
+  .filter((p) => !p.file.includes('/_'))
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime())
+  .slice(0, 3);
+---
+<Layout title="De la pêche à l'assiette">
+  <!-- Hero -->
+  <section class="section" style="padding-top:64px;padding-bottom:40px;">
+    <div class="container" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;">
+      <div>
+        <span class="eyebrow">Pêche &amp; cuisine</span>
+        <h1>De l'hameçon à l'assiette</h1>
+        <p style="margin-top:18px;font-size:1.15rem;max-width:480px;">
+          Je suis cuisinier de métier et pêcheur passionné. Ici, chaque poisson a sa technique de pêche
+          <em>et</em> sa recette — testée en cuisine professionnelle, pas juste "au four avec du citron".
+        </p>
+        <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="/blog/" class="btn btn--primary">Lire le blog</a>
+          <a href="/guide/" class="btn btn--secondary">Découvrir le Guide</a>
+        </div>
+      </div>
+      <div style="background:var(--color-blue-light);border-radius:24px;padding:32px;">
+        <FishIllustration />
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><Waves /></div>
+
+  <!-- Concept -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Le concept</span>
+        <h2>Deux passions, un seul geste</h2>
+        <p>La plupart des sites de pêche s'arrêtent à la prise. La plupart des sites de recettes ignorent d'où vient le poisson. Ici, on relie les deux.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <h3>Technique par espèce</h3>
+          <p style="margin-top:10px;">
+            Où, quand et comment pêcher chaque poisson : leurres, appâts, postes, saisons — l'essentiel, sans jargon inutile.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Recette de cuisinier</h3>
+          <p style="margin-top:10px;">
+            Des recettes pensées comme en cuisine professionnelle : cuissons justes, associations qui fonctionnent, gestes qui font la différence.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Du geste juste</h3>
+          <p style="margin-top:10px;">
+            Vider, écailler, lever des filets, conserver sa prise : les bases pour ne rien gâcher entre l'eau et la poêle.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Derniers articles -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Le blog</span>
+        <h2>Derniers articles</h2>
+      </div>
+      <div class="grid grid--3">
+        {latestPosts.map((post) => (
+          <a href={post.url} class="card" style="display:block;">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              {post.frontmatter.species && <span class="badge">{post.frontmatter.species}</span>}
+            </div>
+            <h3>{post.frontmatter.title}</h3>
+            <p style="margin-top:10px;">{post.frontmatter.excerpt}</p>
+          </a>
+        ))}
+      </div>
+      {latestPosts.length === 0 && (
+        <p style="text-align:center;">Les premiers articles arrivent très bientôt.</p>
+      )}
+      <div style="text-align:center;margin-top:40px;">
+        <a href="/blog/" class="btn btn--secondary">Voir tous les articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ebook teaser -->
+  <section class="section section--soft">
+    <div class="container" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;">
+      <div style="background:var(--color-wood-pale);border-radius:24px;padding:32px;">
+        <CuttingBoardIllustration />
+      </div>
+      <div>
+        <span class="eyebrow">Le guide numérique</span>
+        <h2>Du poisson pêché à l'assiette</h2>
+        <p style="margin-top:16px;font-size:1.05rem;">
+          Le guide complet pour ne plus jamais gâcher une prise : découpe, conservation à bord et à la maison,
+          et des recettes par espèce, expliquées comme un cuisinier vous les montrerait en cuisine.
+        </p>
+        <div style="margin-top:26px;">
+          <a href="/guide/" class="btn btn--primary">Découvrir le Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qui suis-je -->
+  <section class="section">
+    <div class="container" style="max-width:700px;text-align:center;">
+      <span class="eyebrow">Qui écrit ici</span>
+      <h2>Cuisinier de métier, pêcheur depuis toujours</h2>
+      <p style="margin-top:16px;font-size:1.05rem;">
+        Après des années en cuisine professionnelle, j'ai voulu réunir mes deux passions : la pêche du bord et
+        du bateau, et la cuisine du poisson qu'on ramène. Pas de blabla inutile : des techniques qui marchent
+        et des recettes qui donnent envie de retourner à l'eau.
+      </p>
+    </div>
+  </section>
+</Layout>

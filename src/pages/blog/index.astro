@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await Astro.glob('./*.md');
+const articles = posts
+  .filter((p) => !p.file.includes('/_'))
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+<Layout title="Le blog" description="Techniques de pêche et recettes, espèce par espèce.">
+  <section class="section" style="padding-top:56px;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Le blog</span>
+        <h1>Techniques &amp; recettes, espèce par espèce</h1>
+        <p>Chaque article associe une technique de pêche à une recette testée en cuisine.</p>
+      </div>
+
+      <div class="grid grid--3">
+        {articles.map((post) => (
+          <a href={post.url} class="card" style="display:block;">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+              {post.frontmatter.species && <span class="badge">{post.frontmatter.species}</span>}
+              {post.frontmatter.technique && <span class="badge badge--wood">{post.frontmatter.technique}</span>}
+            </div>
+            <h3>{post.frontmatter.title}</h3>
+            <p style="margin-top:10px;">{post.frontmatter.excerpt}</p>
+            <p style="margin-top:14px;font-size:0.85rem;color:var(--color-ink-soft);">
+              {new Date(post.frontmatter.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      {articles.length === 0 && (
+        <p style="text-align:center;">Les premiers articles arrivent très bientôt — reviens vite !</p>
+      )}
+    </div>
+  </section>
+</Layout>

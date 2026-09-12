@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Pêche & Fourneaux — feuille de style globale
+   Palette "nature" : bleu profond (eau), vert (algues/forêt), bois (chaleur)
+   Astuce pour personnaliser : change juste les valeurs ci-dessous.
+   ========================================================================== */
+
+:root {
+  /* Couleurs de marque */
+  --color-bg: #f6f1e7;           /* fond sable/papier chaud */
+  --color-bg-soft: #efe6d3;      /* fond alterné des sections */
+  --color-surface: #fffdf8;      /* fond des cartes */
+  --color-ink: #1f2a24;          /* texte principal (vert très sombre, presque noir) */
+  --color-ink-soft: #4b564d;     /* texte secondaire */
+  --color-line: #ded2b3;         /* bordures discrètes */
+
+  --color-deep-blue: #16404d;    /* bleu profond (eau) */
+  --color-blue: #2f7c8f;         /* bleu principal (CTA secondaires, liens) */
+  --color-blue-light: #cfe6ea;   /* fond bleu clair */
+
+  --color-green: #3f6b4b;        /* vert forêt/algue */
+  --color-green-light: #7fa06f;  /* vert clair (accents) */
+  --color-green-pale: #e4ecdb;   /* fond vert pâle */
+
+  --color-wood: #a5713f;         /* bois clair */
+  --color-wood-dark: #6d4626;    /* bois foncé (CTA principal) */
+  --color-wood-pale: #f0e2cc;    /* fond bois pâle */
+
+  --shadow-soft: 0 10px 30px -12px rgba(31, 42, 36, 0.25);
+  --radius: 14px;
+  --max-width: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-deep-blue);
+}
+
+h1 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+h3 { font-size: 1.3rem; }
+
+p { color: var(--color-ink-soft); }
+
+a { color: var(--color-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img, svg { display: block; max-width: 100%; }
+
+ul { list-style: none; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.section--soft { background: var(--color-bg-soft); }
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.section-head p {
+  margin-top: 12px;
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: 'Fraunces', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-green);
+  background: var(--color-green-pale);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+.btn--primary {
+  background: var(--color-wood-dark);
+  color: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+.btn--primary:hover { background: #5a3a20; }
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--color-deep-blue);
+  color: var(--color-deep-blue);
+}
+.btn--secondary:hover { background: var(--color-blue-light); }
+
+.btn--block { width: 100%; justify-content: center; }
+
+/* Cartes */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-blue-light);
+  color: var(--color-deep-blue);
+}
+
+.badge--wood {
+  background: var(--color-wood-pale);
+  color: var(--color-wood-dark);
+}
+
+/* En-tête / pied de page */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(246, 241, 231, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-deep-blue);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a:not(.btn) {
+  color: var(--color-ink-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.nav a:not(.btn):hover { color: var(--color-deep-blue); }
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+}
+
+.site-footer {
+  background: var(--color-deep-blue);
+  color: #d9e6e2;
+  padding: 48px 0 28px;
+  margin-top: 40px;
+}
+
+.site-footer a { color: #d9e6e2; }
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-note {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Grilles utilitaires */
+.grid {
+  display: grid;
+  gap: 28px;
+}
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+@media (max-width: 880px) {
+  .grid--3 { grid-template-columns: 1fr; }
+  .grid--2 { grid-template-columns: 1fr; }
+}
+
+/* Recette (bloc structuré) */
+.recipe-box {
+  background: var(--color-green-pale);
+  border: 1px solid #c9d9bd;
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 36px 0;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 16px 0 28px;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+}
+.recipe-meta strong { color: var(--color-ink); display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+.recipe-columns {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+}
+@media (max-width: 700px) {
+  .recipe-columns { grid-template-columns: 1fr; }
+}
+
+.recipe-box h3 { margin-bottom: 12px; }
+
+.recipe-box ul.ingredients li {
+  padding: 7px 0;
+  border-bottom: 1px dashed #c9d9bd;
+  color: var(--color-ink);
+}
+
+.recipe-box ol.steps {
+  list-style: none;
+  counter-reset: step;
+}
+.recipe-box ol.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 8px 0 8px 40px;
+  color: var(--color-ink);
+}
+.recipe-box ol.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-green);
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Article : contenu markdown */
+.prose h2 { margin-top: 40px; margin-bottom: 14px; }
+.prose h3 { margin-top: 28px; margin-bottom: 10px; }
+.prose p { margin-bottom: 16px; }
+.prose ul, .prose ol { margin: 0 0 16px 22px; list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin-bottom: 6px; color: var(--color-ink-soft); }
+.prose blockquote {
+  border-left: 4px solid var(--color-green-light);
+  padding-left: 18px;
+  color: var(--color-ink-soft);
+  font-style: italic;
+  margin: 20px 0;
+}

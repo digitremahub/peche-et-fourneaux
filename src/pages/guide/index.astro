@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CuttingBoardIllustration from '../../components/CuttingBoardIllustration.astro';
+
+// ============================================================================
+// PAGE DE VENTE DE L'EBOOK
+// Pour brancher Gumroad ou Payhip : remplace la valeur de BUY_LINK ci-dessous
+// par le lien "Acheter" fourni par Gumroad/Payhip. C'est tout — pas d'autre
+// changement nécessaire.
+// ============================================================================
+const BUY_LINK = "#"; // <- remplace "#" par ton lien Gumroad ou Payhip
+
+const inclus = [
+  {
+    title: "Découpe par espèce",
+    text: "Vider, écailler, lever des filets : les gestes expliqués pour les espèces les plus pêchées en France.",
+  },
+  {
+    title: "Conservation à bord et à la maison",
+    text: "Comment garder un poisson frais entre la prise et la cuisine, sans matériel compliqué.",
+  },
+  {
+    title: "Recettes par espèce",
+    text: "Une sélection de recettes testées en cuisine professionnelle, classées par poisson pour trouver vite.",
+  },
+  {
+    title: "Fiches techniques imprimables",
+    text: "Des fiches synthétiques à garder sous la main, en bateau comme en cuisine.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Le guide est-il adapté aux débutants ?",
+    a: "Oui. Chaque geste est expliqué pas à pas, sans supposer de compétences en cuisine ou en pêche.",
+  },
+  {
+    q: "Sous quel format je reçois le guide ?",
+    a: "En PDF, téléchargeable immédiatement après l'achat, lisible sur ordinateur, tablette ou téléphone.",
+  },
+  {
+    q: "Le guide couvre-t-il toutes les espèces ?",
+    a: "Il se concentre sur les espèces les plus couramment pêchées sur les côtes françaises. D'autres espèces pourront être ajoutées dans de futures mises à jour.",
+  },
+];
+---
+<Layout
+  title="Le Guide — Du poisson pêché à l'assiette"
+  description="Le guide numérique pour découper, conserver et cuisiner le poisson que vous avez pêché, par un cuisinier de métier."
+>
+  <section class="section" style="padding-top:56px;">
+    <div class="container" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;">
+      <div>
+        <span class="eyebrow">Le guide numérique</span>
+        <h1>Du poisson pêché à l'assiette</h1>
+        <p style="margin-top:18px;font-size:1.1rem;">
+          Vous savez pêcher. Ce guide vous apprend à ne rien gâcher une fois de retour à la maison :
+          découper proprement, conserver comme il faut, et cuisiner votre prise comme le ferait un cuisinier de métier.
+        </p>
+        <div style="margin-top:30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+          <a href={BUY_LINK} class="btn btn--primary">Je veux le guide</a>
+          <span style="color:var(--color-ink-soft);font-size:0.9rem;">Téléchargement immédiat en PDF</span>
+        </div>
+      </div>
+      <div style="background:var(--color-wood-pale);border-radius:24px;padding:32px;">
+        <CuttingBoardIllustration />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Contenu</span>
+        <h2>Ce que contient le guide</h2>
+      </div>
+      <div class="grid grid--2">
+        {inclus.map((item) => (
+          <div class="card">
+            <h3>{item.title}</h3>
+            <p style="margin-top:10px;">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:700px;">
+      <div class="section-head">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Avant d'acheter</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        {faqs.map((f) => (
+          <div class="card">
+            <h3 style="font-size:1.05rem;">{f.q}</h3>
+            <p style="margin-top:8px;">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container" style="max-width:640px;text-align:center;">
+      <h2>Prêt à ne plus jamais gâcher une prise ?</h2>
+      <p style="margin-top:14px;">Téléchargement immédiat après l'achat, au format PDF.</p>
+      <div style="margin-top:26px;">
+        <a href={BUY_LINK} class="btn btn--primary">Je veux le guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>

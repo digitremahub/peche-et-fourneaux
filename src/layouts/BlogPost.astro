@@ -1,0 +1,92 @@
+---
+import Layout from './Layout.astro';
+import Waves from '../components/Waves.astro';
+
+interface Recipe {
+  name: string;
+  servings?: number;
+  prepTime?: string;
+  cookTime?: string;
+  difficulty?: string;
+  ingredients: string[];
+  steps: string[];
+}
+
+interface Frontmatter {
+  title: string;
+  description?: string;
+  date: string;
+  species?: string;
+  technique?: string;
+  recipe?: Recipe;
+}
+
+// Astro place les champs du frontmatter d'un article .md dans Astro.props.frontmatter
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const { title, description, date, species, technique, recipe } = Astro.props.frontmatter;
+
+const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+<Layout title={title} description={description}>
+  <article class="section" style="padding-top:48px;">
+    <div class="container" style="max-width:760px;">
+      <div style="margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap;">
+        {species && <span class="badge">{species}</span>}
+        {technique && <span class="badge badge--wood">{technique}</span>}
+      </div>
+      <h1>{title}</h1>
+      <p style="margin-top:14px;color:var(--color-ink-soft);font-size:0.95rem;">
+        Publié le {formattedDate}
+      </p>
+
+      <div style="margin:28px 0;">
+        <Waves />
+      </div>
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      {recipe && (
+        <div class="recipe-box">
+          <span class="eyebrow">La recette</span>
+          <h3>{recipe.name}</h3>
+          <div class="recipe-meta">
+            {recipe.servings && <div><strong>Pour</strong>{recipe.servings} personnes</div>}
+            {recipe.prepTime && <div><strong>Préparation</strong>{recipe.prepTime}</div>}
+            {recipe.cookTime && <div><strong>Cuisson</strong>{recipe.cookTime}</div>}
+            {recipe.difficulty && <div><strong>Difficulté</strong>{recipe.difficulty}</div>}
+          </div>
+          <div class="recipe-columns">
+            <div>
+              <h3 style="font-size:1.05rem;">Ingrédients</h3>
+              <ul class="ingredients">
+                {recipe.ingredients.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-size:1.05rem;">Étapes</h3>
+              <ol class="steps">
+                {recipe.steps.map((step) => <li>{step}</li>)}
+              </ol>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div class="card" style="margin-top:48px;text-align:center;">
+        <p style="color:var(--color-ink);font-weight:500;">
+          Envie d'aller plus loin dans la découpe, la conservation et les recettes par espèce ?
+        </p>
+        <a href="/guide/" class="btn btn--primary" style="margin-top:14px;">Découvrir le Guide numérique</a>
+      </div>
+    </div>
+  </article>
+</Layout>
