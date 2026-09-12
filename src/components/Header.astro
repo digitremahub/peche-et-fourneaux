@@ -1,9 +1,11 @@
 ---
+// "Carte" volontairement absente du menu principal : elle ne contient
+// qu'une poignée d'espèces pour l'instant. Elle reste accessible depuis
+// le blog et le pied de page. Remets-la ici une fois qu'il y a plus
+// d'espèces renseignées ({ href: '/carte/', label: 'Carte' }).
 const nav = [
   { href: '/', label: 'Accueil' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/carte/', label: 'Carte' },
-  { href: '/guide/', label: 'Le Guide' },
 ];
 const current = Astro.url.pathname;
 ---

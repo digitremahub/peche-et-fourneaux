@@ -5,10 +5,11 @@ import CuttingBoardIllustration from '../components/CuttingBoardIllustration.ast
 import Waves from '../components/Waves.astro';
 
 const posts = await Astro.glob('./blog/*.md');
-const latestPosts = posts
+const sortedPosts = posts
   .filter((p) => !p.file.includes('/_'))
-  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime())
-  .slice(0, 3);
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+const latestPosts = sortedPosts.slice(0, 3);
+const heroPost = sortedPosts[0];
 ---
 <Layout title="De la pêche à l'assiette">
   <!-- Hero -->
@@ -21,9 +22,12 @@ const latestPosts = posts
           Je suis cuisinier de métier et pêcheur passionné. Ici, chaque poisson a sa technique de pêche
           <em>et</em> sa recette — testée en cuisine professionnelle, pas juste "au four avec du citron".
         </p>
-        <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="/blog/" class="btn btn--primary">Lire le blog</a>
-          <a href="/guide/" class="btn btn--secondary">Découvrir le Guide</a>
+        <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+          {heroPost ? (
+            <a href={heroPost.url} class="btn btn--primary">Lire : {heroPost.frontmatter.title.split(' : ')[0]} →</a>
+          ) : (
+            <a href="/blog/" class="btn btn--primary">Lire le blog</a>
+          )}
         </div>
       </div>
       <div style="background:var(--color-blue-light);border-radius:24px;padding:32px;">

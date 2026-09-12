@@ -95,6 +95,11 @@ mesure que tu es accepté sur les programmes d'affiliation.
 
 Tous les boutons "Je veux le guide" de la page utilisent automatiquement ce même lien.
 
+**Tant que `BUY_LINK` reste sur `"#"`**, les boutons affichent automatiquement "Bientôt disponible" +
+un lien "être prévenu·e par email" à la place d'un faux bouton d'achat — pour ne jamais montrer un
+bouton qui ne mène nulle part. Dès que tu mets un vrai lien, les vrais boutons d'achat reviennent
+automatiquement, partout sur la page.
+
 ## 🎨 Changer les couleurs
 
 Toutes les couleurs du site sont regroupées en haut du fichier `src/styles/global.css` (section `:root`). Change un code couleur (ex: `--color-wood-dark: #6d4626;`) et toutes les pages du site sont mises à jour.
