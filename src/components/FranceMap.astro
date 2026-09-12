@@ -62,24 +62,32 @@ const CORSICA_PATH = `M10049 1898 c0 -2 -3 -28 -6 -58 -3 -30 -9 -62 -14 -72 -14 
     <path d={CORSICA_PATH}></path>
   </g>
 
-  {ZONES.map((zone) => (
-    <g>
-      <circle cx={zone.x} cy={zone.y} r="8" fill="var(--color-deep-blue)" opacity="0.4" />
-      <text
-        x={zone.labelSide === 'left' ? zone.x - 26 : zone.x + 26}
-        y={zone.y + 10}
-        text-anchor={zone.labelSide === 'left' ? 'end' : 'start'}
-        font-size="30"
-        font-family="'Work Sans', sans-serif"
-        fill="var(--color-ink-soft)"
-      >{zone.shortLabel}</text>
-    </g>
-  ))}
-
   {placedMarkers.map((m) => (
     <g transform={`translate(${m.x - MARKER_SIZE / 2}, ${m.y - MARKER_SIZE / 2})`}>
       <title>{m.title}</title>
       <Fragment set:html={shapeMarkup(m.shape, m.color, MARKER_SIZE)} />
+    </g>
+  ))}
+
+  <!-- Étiquettes des zones : rendues APRÈS les marqueurs (donc par-dessus),
+       avec un halo blanc et un décalage assez large pour rester lisibles
+       même quand plusieurs espèces se regroupent sur la même zone. -->
+  {ZONES.map((zone) => (
+    <g>
+      <circle cx={zone.x} cy={zone.y} r="6" fill="var(--color-deep-blue)" opacity="0.5" />
+      <text
+        x={zone.labelSide === 'left' ? zone.x - 100 : zone.x + 100}
+        y={zone.y + 10}
+        text-anchor={zone.labelSide === 'left' ? 'end' : 'start'}
+        font-size="30"
+        font-family="'Work Sans', sans-serif"
+        font-weight="600"
+        fill="var(--color-ink)"
+        stroke="var(--color-bg)"
+        stroke-width="6"
+        stroke-linejoin="round"
+        paint-order="stroke"
+      >{zone.shortLabel}</text>
     </g>
   ))}
 </svg>
