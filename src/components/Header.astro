@@ -1,11 +1,9 @@
 ---
-// "Carte" volontairement absente du menu principal : elle ne contient
-// qu'une poignée d'espèces pour l'instant. Elle reste accessible depuis
-// le blog et le pied de page. Remets-la ici une fois qu'il y a plus
-// d'espèces renseignées ({ href: '/carte/', label: 'Carte' }).
 const nav = [
   { href: '/', label: 'Accueil' },
   { href: '/blog/', label: 'Blog' },
+  { href: '/carte/', label: 'Carte' },
+  { href: '/guide/', label: 'Le Guide' },
 ];
 const current = Astro.url.pathname;
 ---
@@ -19,13 +17,45 @@ const current = Astro.url.pathname;
       </svg>
       Gino Fish &amp; Cook
     </a>
-    <nav class="nav">
-      <div class="nav-links nav">
+
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Ouvrir le menu">
+      <svg class="icon-burger" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="nav-panel" id="site-nav">
+      <nav class="nav-links" aria-label="Navigation principale">
         {nav.map((item) => (
           <a href={item.href} style={current === item.href ? 'color:var(--color-deep-blue);font-weight:700;' : ''}>{item.label}</a>
         ))}
-      </div>
-      <a href="/guide/" class="btn btn--primary" style="padding:10px 20px;font-size:0.88rem;">Le Guide numérique</a>
-    </nav>
+      </nav>
+      <a href="/guide/" class="btn btn--primary nav-cta">Le Guide numérique</a>
+    </div>
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const panel = document.getElementById('site-nav');
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('nav-panel--open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.classList.toggle('menu-toggle--open', isOpen);
+    });
+
+    // Referme le menu dès qu'on clique un lien (mobile)
+    panel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        panel.classList.remove('nav-panel--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('menu-toggle--open');
+      });
+    });
+  }
+</script>
