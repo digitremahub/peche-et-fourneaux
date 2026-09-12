@@ -5,7 +5,11 @@ interface Props {
 }
 const { class: klass = '' } = Astro.props;
 ---
-<svg class={klass} viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration d'un poisson">
+<svg class={klass} viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration d'un poisson posé sur un plateau en bois">
+  <!-- Plateau en bois, pour donner du relief derrière le poisson -->
+  <ellipse cx="160" cy="160" rx="148" ry="24" fill="var(--color-wood-pale)" stroke="var(--color-wood-dark)" stroke-width="2.5"/>
+  <path d="M32 158q128 16 256 0" stroke="var(--color-wood)" stroke-width="1.5" opacity="0.5" fill="none"/>
+  <path d="M40 165q120 13 240 0" stroke="var(--color-wood)" stroke-width="1.5" opacity="0.4" fill="none"/>
   <path d="M20 100c40-55 110-70 160-40 25 15 45 35 60 40-15 5-35 25-60 40-50 30-120 15-160-40z"
         stroke="var(--color-deep-blue)" stroke-width="4" stroke-linejoin="round"/>
   <path d="M240 100l40-28v56l-40-28z" stroke="var(--color-deep-blue)" stroke-width="4" stroke-linejoin="round"/>

@@ -12,12 +12,20 @@ interface Recipe {
   steps: string[];
 }
 
+interface MaterielItem {
+  name: string;
+  note?: string;
+  link: string;
+  partenaire?: string;
+}
+
 interface Frontmatter {
   title: string;
   description?: string;
   date: string;
   species?: string;
   technique?: string;
+  materiel?: MaterielItem[];
   recipe?: Recipe;
 }
 
@@ -26,13 +34,15 @@ interface Props {
   frontmatter: Frontmatter;
 }
 
-const { title, description, date, species, technique, recipe } = Astro.props.frontmatter;
+const { title, description, date, species, technique, materiel, recipe } = Astro.props.frontmatter;
 
 const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
 });
+
+const hasMateriel = materiel && materiel.length > 0;
 ---
 <Layout title={title} description={description}>
   <article class="section" style="padding-top:48px;">
@@ -46,16 +56,49 @@ const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
         Publié le {formattedDate}
       </p>
 
+      <!-- Navigation rapide : technique / matériel / recette -->
+      <nav class="jump-nav" aria-label="Aller à">
+        <a href="#technique">🎣 Technique de pêche</a>
+        {hasMateriel && <a href="#materiel">🧰 Matériel conseillé</a>}
+        {recipe && <a href="#recette">🍽️ La recette</a>}
+      </nav>
+
       <div style="margin:28px 0;">
         <Waves />
       </div>
 
-      <div class="prose">
+      <div class="prose" id="technique">
         <slot />
       </div>
 
+      {hasMateriel && (
+        <div class="kit-box" id="materiel">
+          <span class="eyebrow">Le matériel conseillé</span>
+          <h3>Le kit pour {species ? species.toLowerCase() : 'cette pêche'}</h3>
+          <div class="kit-list">
+            {materiel.map((item) => (
+              <div class="kit-item">
+                <div>
+                  <div class="kit-item-name">
+                    {item.name}
+                    {item.partenaire && <span class="kit-item-partner">via {item.partenaire}</span>}
+                  </div>
+                  {item.note && <div class="kit-item-note">{item.note}</div>}
+                </div>
+                <a href={item.link} class="kit-link" target="_blank" rel="sponsored noopener noreferrer">
+                  Voir le produit →
+                </a>
+              </div>
+            ))}
+          </div>
+          <p class="kit-disclosure">
+            🔗 Liens affiliés : si tu achètes via ces liens, ça ne coûte rien de plus et ça soutient le site, sans influencer le choix du matériel présenté ici.
+          </p>
+        </div>
+      )}
+
       {recipe && (
-        <div class="recipe-box">
+        <div class="recipe-box" id="recette">
           <span class="eyebrow">La recette</span>
           <h3>{recipe.name}</h3>
           <div class="recipe-meta">

@@ -51,6 +51,24 @@ Texte normal en paragraphe.
 > Une citation ou un encart "astuce"
 ```
 
+## 🧰 Ajouter le matériel affilié (kit par poisson)
+
+Chaque article peut afficher un encadré "matériel conseillé" avec des liens d'affiliation, entre la
+technique de pêche et la recette. Pour l'activer sur un article :
+
+1. Inscris-toi aux programmes d'affiliation pertinents (gratuits) :
+   - [Pêcheur.com via Kwanko](https://affi.io/m/pecheur-com) — le plus gros catalogue pêche en France.
+   - [Décathlon / Caperlan via Rakuten Advertising](https://www.decathlon.fr/lp/i/affiliation) — jusqu'à 15% de commission.
+   - [Amazon Partenaires](https://partenaires.amazon.fr/) — en solution de repli si un produit n'est pas chez les deux premiers.
+2. Une fois accepté, génère ton lien d'affilié pour chaque produit que tu recommandes.
+3. Dans le fichier de l'article, remplis le bloc `materiel:` (voir `_MODELE-ARTICLE.md`) avec 3-4 produits
+   et colle ton lien dans le champ `link:`.
+4. Enregistre, commit, push.
+
+L'encadré affiche automatiquement la mention "Liens affiliés" — c'est une obligation légale en France, ne
+la retire pas. Pas besoin de matériel sur *chaque* article dès le départ : ajoute le bloc au fur et à
+mesure que tu es accepté sur les programmes d'affiliation.
+
 ## 🛒 Brancher le bouton d'achat de l'ebook (Gumroad / Payhip)
 
 1. Crée ton produit sur [Gumroad](https://gumroad.com) ou [Payhip](https://payhip.com) (gratuit pour démarrer, ils prennent une commission sur les ventes).
@@ -109,4 +127,5 @@ public/
 - Écrire 4-5 articles de plus pour lancer le blog avec un peu de contenu.
 - Finaliser le guide numérique (PDF) et le mettre en vente sur Gumroad/Payhip.
 - Compléter les mentions légales et ajouter des CGV avant la première vente.
-- Plus tard : ajouter des liens d'affiliation matériel de pêche dans les articles concernés (encadré "Le matériel utilisé" par exemple).
+- S'inscrire aux programmes d'affiliation (Pêcheur.com, Décathlon/Caperlan, Amazon) et remplir le bloc
+  `materiel:` des articles au fur et à mesure des acceptations.

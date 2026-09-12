@@ -21,9 +21,11 @@
   --color-green-light: #6fb39c;  /* vert clair (accents) */
   --color-green-pale: #dcf0e7;   /* fond vert pâle (bloc recette) */
 
-  --color-wood: #a5713f;         /* bois clair (accent chaleureux) */
-  --color-wood-dark: #6d4626;    /* bois foncé (CTA principal, contraste chaud sur fond océan) */
-  --color-wood-pale: #f0e2cc;    /* fond bois pâle */
+  /* Bois : réservé aux illustrations (planches/plateaux) pour donner du relief
+     au bleu — jamais sur les boutons/badges, qui restent 100% bleus. */
+  --color-wood: #a5713f;
+  --color-wood-dark: #6d4626;
+  --color-wood-pale: #f0e2cc;
 
   --shadow-soft: 0 10px 30px -12px rgba(11, 59, 74, 0.22);
   --radius: 14px;
@@ -122,11 +124,11 @@ ul { list-style: none; }
 .btn:hover { transform: translateY(-2px); text-decoration: none; }
 
 .btn--primary {
-  background: var(--color-wood-dark);
+  background: var(--color-deep-blue);
   color: var(--color-surface);
   box-shadow: var(--shadow-soft);
 }
-.btn--primary:hover { background: #5a3a20; }
+.btn--primary:hover { background: #082832; }
 
 .btn--secondary {
   background: transparent;
@@ -159,8 +161,8 @@ ul { list-style: none; }
 }
 
 .badge--wood {
-  background: var(--color-wood-pale);
-  color: var(--color-wood-dark);
+  background: var(--color-deep-blue);
+  color: #fff;
 }
 
 /* En-tête / pied de page */
@@ -249,6 +251,7 @@ ul { list-style: none; }
   border-radius: var(--radius);
   padding: 32px;
   margin: 36px 0;
+  scroll-margin-top: 90px;
 }
 
 .recipe-meta {
@@ -306,7 +309,85 @@ ul { list-style: none; }
   justify-content: center;
 }
 
+/* Navigation rapide en haut d'article */
+.jump-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0 0;
+}
+.jump-nav a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--color-blue-light);
+  color: var(--color-deep-blue);
+  text-decoration: none;
+}
+.jump-nav a:hover { background: var(--color-blue); color: #fff; text-decoration: none; }
+
+/* Kit matériel (liens affiliés) */
+.kit-box {
+  background: var(--color-blue-light);
+  border: 1px solid #a9d9df;
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 36px 0;
+  scroll-margin-top: 90px;
+}
+.kit-box h3 { margin-bottom: 20px; }
+
+.kit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px dashed #a9d9df;
+}
+.kit-item:last-child { border-bottom: none; }
+
+.kit-item-name {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.kit-item-partner {
+  font-weight: 500;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-blue);
+  margin-left: 8px;
+}
+.kit-item-note {
+  color: var(--color-ink-soft);
+  font-size: 0.92rem;
+  margin-top: 3px;
+}
+
+.kit-link {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: var(--color-deep-blue);
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.kit-link:hover { background: #082832; text-decoration: none; }
+
+.kit-disclosure {
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+  margin-top: 20px;
+}
+
 /* Article : contenu markdown */
+.prose { scroll-margin-top: 90px; }
 .prose h2 { margin-top: 40px; margin-bottom: 14px; }
 .prose h3 { margin-top: 28px; margin-bottom: 10px; }
 .prose p { margin-bottom: 16px; }

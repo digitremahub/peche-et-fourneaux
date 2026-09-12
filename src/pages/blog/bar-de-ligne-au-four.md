@@ -6,6 +6,23 @@ date: 2026-06-12
 species: "Bar (loup de mer)"
 technique: "Surfcasting / leurre"
 excerpt: "Où et quand pêcher le bar depuis la plage, puis une cuisson au four simple qui met en valeur sa chair fine."
+materiel:
+  - name: "Canne à leurre 2,40 m (20-60 g)"
+    note: "Assez nerveuse pour animer un shad sans fatiguer le poignet en session longue."
+    partenaire: "Décathlon / Caperlan"
+    link: "#"
+  - name: "Leurres souples shad 12-15 cm"
+    note: "Le format qui imite le mieux les proies du bar en bord de plage."
+    partenaire: "Pêcheur.com"
+    link: "#"
+  - name: "Têtes plombées 15-20 g"
+    note: "Pour rester au bon niveau d'eau selon le courant et la houle."
+    partenaire: "Pêcheur.com"
+    link: "#"
+  - name: "Popper / stickbait de surface"
+    note: "Indispensable au lever du jour par mer calme."
+    partenaire: "Décathlon / Caperlan"
+    link: "#"
 recipe:
   name: "Bar de ligne entier au four, beurre blanc citronné"
   servings: 4

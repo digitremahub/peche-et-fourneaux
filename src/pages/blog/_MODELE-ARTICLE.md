@@ -11,8 +11,14 @@
 # 4. Écris ton article en Markdown en dessous de la ligne --- finale.
 # 5. Enregistre, commit, push : le site se republie automatiquement.
 #
-# Le bloc "recipe" est optionnel : si un article n'a pas de recette,
-# supprime tout le bloc "recipe:" et ses lignes en dessous.
+# Les blocs "materiel" et "recipe" sont optionnels : si un article n'a pas
+# de matériel affilié ou pas de recette, supprime le bloc concerné en entier.
+#
+# Pour le bloc "materiel" (kit matériel affilié) :
+# - "link" : ton lien d'affiliation (Pêcheur.com via Kwanko, Décathlon via
+#   Rakuten Advertising, Amazon Partenaires...). Remplace "#" par ce lien.
+# - "partenaire" est optionnel, juste affiché en petit à côté du produit.
+# - Pas besoin de mettre un produit dans chaque catégorie : 3-4 suffisent.
 # ============================================================================
 layout: ../../layouts/BlogPost.astro
 title: "Titre de l'article (ex: Le maquereau à la plume : technique et recette grillée)"
@@ -21,6 +27,15 @@ date: 2026-01-01
 species: "Nom de l'espèce (ex: Maquereau)"
 technique: "Nom de la technique (ex: Pêche à la plume)"
 excerpt: "Une phrase d'accroche affichée dans la liste des articles."
+materiel:
+  - name: "Nom du produit 1 (ex: Canne à plumes 4 m)"
+    note: "Pourquoi ce produit précisément (une phrase)."
+    partenaire: "Nom du partenaire (ex: Décathlon, Pêcheur.com...)"
+    link: "#"
+  - name: "Nom du produit 2"
+    note: "Pourquoi ce produit précisément."
+    partenaire: "Nom du partenaire"
+    link: "#"
 recipe:
   name: "Nom du plat"
   servings: 4
