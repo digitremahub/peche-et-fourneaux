@@ -87,9 +87,13 @@ const hasMateriel = materiel && materiel.length > 0;
                   </div>
                   {item.note && <div class="kit-item-note">{item.note}</div>}
                 </div>
-                <a href={item.link} class="kit-link" target="_blank" rel="sponsored noopener noreferrer">
-                  Voir le produit →
-                </a>
+                {item.link && item.link !== '#' ? (
+                  <a href={item.link} class="kit-link" target="_blank" rel="sponsored noopener noreferrer">
+                    Voir le produit →
+                  </a>
+                ) : (
+                  <span class="kit-link kit-link--soon">Lien à venir</span>
+                )}
               </div>
             ))}
           </div>

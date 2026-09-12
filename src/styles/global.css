@@ -466,6 +466,15 @@ ul { list-style: none; }
 }
 .kit-link:hover { background: #082832; text-decoration: none; }
 
+/* État tant qu'aucun vrai lien d'affiliation n'est encore branché : visuellement
+   distinct d'un bouton actif, et pas cliquable (ce n'est pas un <a>). */
+.kit-link--soon {
+  background: transparent;
+  border: 1.5px dashed var(--color-blue);
+  color: var(--color-blue);
+  cursor: default;
+}
+
 .kit-disclosure {
   font-size: 0.8rem;
   color: var(--color-ink-soft);

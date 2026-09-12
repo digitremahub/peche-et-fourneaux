@@ -79,6 +79,10 @@ L'encadré affiche automatiquement la mention "Liens affiliés" — c'est une ob
 la retire pas. Pas besoin de matériel sur *chaque* article dès le départ : ajoute le bloc au fur et à
 mesure que tu es accepté sur les programmes d'affiliation.
 
+**Tant qu'un produit garde `link: "#"`**, le site affiche automatiquement "Lien à venir" (non cliquable)
+à la place d'un bouton qui ne mènerait nulle part. Dès que tu colles le vrai lien d'affiliation, le
+bouton "Voir le produit →" apparaît tout seul.
+
 ## 🛒 Brancher le bouton d'achat de l'ebook (Gumroad / Payhip)
 
 1. Crée ton produit sur [Gumroad](https://gumroad.com) ou [Payhip](https://payhip.com) (gratuit pour démarrer, ils prennent une commission sur les ventes).
