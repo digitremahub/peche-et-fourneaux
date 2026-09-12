@@ -25,6 +25,7 @@ interface Frontmatter {
   date: string;
   species?: string;
   technique?: string;
+  zones?: string[];
   materiel?: MaterielItem[];
   recipe?: Recipe;
 }
@@ -34,7 +35,7 @@ interface Props {
   frontmatter: Frontmatter;
 }
 
-const { title, description, date, species, technique, materiel, recipe } = Astro.props.frontmatter;
+const { title, description, date, species, technique, zones, materiel, recipe } = Astro.props.frontmatter;
 
 const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
   day: 'numeric',
@@ -61,6 +62,7 @@ const hasMateriel = materiel && materiel.length > 0;
         <a href="#technique">🎣 Technique de pêche</a>
         {hasMateriel && <a href="#materiel">🧰 Matériel conseillé</a>}
         {recipe && <a href="#recette">🍽️ La recette</a>}
+        {zones && zones.length > 0 && <a href="/carte/">🗺️ Voir sur la carte</a>}
       </nav>
 
       <div style="margin:28px 0;">

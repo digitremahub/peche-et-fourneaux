@@ -5,6 +5,7 @@ description: "Comment pêcher le bar au leurre depuis le bord, et comment le cui
 date: 2026-06-12
 species: "Bar (loup de mer)"
 technique: "Surfcasting / leurre"
+zones: ["manche", "atlantique-nord", "atlantique-sud"]
 excerpt: "Où et quand pêcher le bar depuis la plage, puis une cuisson au four simple qui met en valeur sa chair fine."
 materiel:
   - name: "Canne à leurre 2,40 m (20-60 g)"

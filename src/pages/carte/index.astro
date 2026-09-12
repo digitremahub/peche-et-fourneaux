@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FranceMap from '../../components/FranceMap.astro';
+import { pickStyle, shapeMarkup } from '../../utils/shapes.js';
+import { ZONES } from '../../data/zones.js';
+
+const posts = await Astro.glob('../blog/*.md');
+const articles = posts.filter((p) => !p.file.includes('/_') && p.frontmatter.species);
+
+// Une entrée de légende par espèce (au cas où deux articles partageraient
+// la même espèce un jour, on ne l'affiche qu'une fois).
+const bySpecies = new Map();
+for (const post of articles) {
+  const { species, zones } = post.frontmatter;
+  if (!bySpecies.has(species)) {
+    bySpecies.set(species, { species, zones: new Set(), url: post.url });
+  }
+  (zones || []).forEach((z) => bySpecies.get(species).zones.add(z));
+}
+
+const especes = [...bySpecies.values()].map((e) => ({
+  ...e,
+  ...pickStyle(e.species),
+}));
+
+const markers = especes.flatMap((e) =>
+  [...e.zones].map((zoneId) => ({ zoneId, shape: e.shape, color: e.color, title: e.species }))
+);
+
+const especesSansZone = especes.filter((e) => e.zones.size === 0);
+---
+<Layout
+  title="Carte des zones de pêche"
+  description="Où pêcher chaque espèce du blog : carte schématique des zones de pêche par poisson, avec légende."
+>
+  <section class="section" style="padding-top:56px;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">La carte</span>
+        <h1>Où pêcher chaque poisson</h1>
+        <p>
+          Une carte simplifiée (pas géographiquement précise) pour situer, d'un coup d'œil, les zones où
+          pêcher les espèces du blog. Clique sur une espèce dans la légende pour lire sa fiche complète.
+        </p>
+      </div>
+
+      <div class="map-layout">
+        <div class="map-panel">
+          <FranceMap markers={markers} />
+        </div>
+
+        <div class="map-legend">
+          <h3 style="margin-bottom:16px;">Légende</h3>
+          {especes.length === 0 && (
+            <p>Les premières espèces arrivent bientôt sur la carte.</p>
+          )}
+          <ul class="legend-list">
+            {especes.map((e) => (
+              <li>
+                <a href={e.url} class="legend-item">
+                  <span class="legend-swatch">
+                    <svg width="18" height="18" viewBox="0 0 18 18" set:html={shapeMarkup(e.shape, e.color, 18)} />
+                  </span>
+                  <span>
+                    <span class="legend-name">{e.species}</span>
+                    {e.zones.size > 0 && (
+                      <span class="legend-zones">
+                        {[...e.zones].map((zId) => ZONES.find((z) => z.id === zId)?.shortLabel).filter(Boolean).join(' · ')}
+                      </span>
+                    )}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          {especesSansZone.length > 0 && (
+            <p style="margin-top:14px;font-size:0.85rem;color:var(--color-ink-soft);">
+              Zones pas encore renseignées pour : {especesSansZone.map((e) => e.species).join(', ')}.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

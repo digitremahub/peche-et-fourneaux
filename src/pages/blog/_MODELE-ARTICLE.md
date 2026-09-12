@@ -26,6 +26,10 @@ description: "Une phrase pour les moteurs de recherche et les réseaux sociaux."
 date: 2026-01-01
 species: "Nom de l'espèce (ex: Maquereau)"
 technique: "Nom de la technique (ex: Pêche à la plume)"
+# Zones où pêcher cette espèce, affichées automatiquement sur la page /carte/.
+# Choisis parmi : manche, atlantique-nord, atlantique-sud, mediterranee, eaux-douces
+# (une ou plusieurs zones, ou supprime la ligne si tu ne sais pas encore).
+zones: ["manche", "atlantique-nord"]
 excerpt: "Une phrase d'accroche affichée dans la liste des articles."
 materiel:
   - name: "Nom du produit 1 (ex: Canne à plumes 4 m)"

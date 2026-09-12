@@ -309,6 +309,47 @@ ul { list-style: none; }
   justify-content: center;
 }
 
+/* Carte des zones de pêche */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .map-layout { grid-template-columns: 1fr; }
+}
+
+.map-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  justify-content: center;
+}
+
+.map-legend { padding-top: 8px; }
+
+.legend-list { display: flex; flex-direction: column; gap: 4px; }
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.legend-item:hover { background: var(--color-blue-light); text-decoration: none; }
+
+.legend-swatch { flex-shrink: 0; display: block; }
+.legend-swatch svg { display: block; }
+
+.legend-name { display: block; font-weight: 600; color: var(--color-ink); }
+.legend-zones { display: block; font-size: 0.82rem; color: var(--color-ink-soft); margin-top: 2px; }
+
 /* Navigation rapide en haut d'article */
 .jump-nav {
   display: flex;

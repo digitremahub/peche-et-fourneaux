@@ -51,6 +51,16 @@ Texte normal en paragraphe.
 > Une citation ou un encart "astuce"
 ```
 
+## 🗺️ La carte des zones de pêche
+
+La page `/carte/` se remplit **automatiquement** à partir des articles : rien à maintenir à part le champ
+`zones:` de chaque article (voir `_MODELE-ARTICLE.md`). Choisis une ou plusieurs zones parmi :
+`manche`, `atlantique-nord`, `atlantique-sud`, `mediterranee`, `eaux-douces`.
+
+Chaque espèce reçoit automatiquement une forme + une couleur (toujours la même pour une espèce donnée,
+générée à partir de son nom) — pas besoin de choisir toi-même les couleurs. Si un article n'a pas encore
+de champ `zones:`, il n'apparaît simplement pas sur la carte (mais reste visible sur le blog).
+
 ## 🧰 Ajouter le matériel affilié (kit par poisson)
 
 Chaque article peut afficher un encadré "matériel conseillé" avec des liens d'affiliation, entre la
