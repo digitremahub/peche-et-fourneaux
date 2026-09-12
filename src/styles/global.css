@@ -1,31 +1,31 @@
 /* ==========================================================================
-   Pêche & Fourneaux — feuille de style globale
-   Palette "nature" : bleu profond (eau), vert (algues/forêt), bois (chaleur)
+   Gino Fish & Cook — feuille de style globale
+   Palette "océan" : bleu/turquoise dominant (eau), vert (algues), bois en accent
    Astuce pour personnaliser : change juste les valeurs ci-dessous.
    ========================================================================== */
 
 :root {
   /* Couleurs de marque */
-  --color-bg: #f6f1e7;           /* fond sable/papier chaud */
-  --color-bg-soft: #efe6d3;      /* fond alterné des sections */
-  --color-surface: #fffdf8;      /* fond des cartes */
-  --color-ink: #1f2a24;          /* texte principal (vert très sombre, presque noir) */
-  --color-ink-soft: #4b564d;     /* texte secondaire */
-  --color-line: #ded2b3;         /* bordures discrètes */
+  --color-bg: #eff6f6;           /* fond blanc écume, teinte bleu très pâle */
+  --color-bg-soft: #e0eef0;      /* fond alterné des sections, bleu clair */
+  --color-surface: #ffffff;      /* fond des cartes */
+  --color-ink: #10262b;          /* texte principal (bleu-nuit très sombre, presque noir) */
+  --color-ink-soft: #3e5c61;     /* texte secondaire (bleu-gris) */
+  --color-line: #c9dee0;         /* bordures discrètes, bleu pâle */
 
-  --color-deep-blue: #16404d;    /* bleu profond (eau) */
-  --color-blue: #2f7c8f;         /* bleu principal (CTA secondaires, liens) */
-  --color-blue-light: #cfe6ea;   /* fond bleu clair */
+  --color-deep-blue: #0b3b4a;    /* bleu profond océan (titres) */
+  --color-blue: #1487a0;         /* bleu/turquoise principal (liens, CTA secondaires, badges) */
+  --color-blue-light: #c7ebef;   /* fond bleu clair */
 
-  --color-green: #3f6b4b;        /* vert forêt/algue */
-  --color-green-light: #7fa06f;  /* vert clair (accents) */
-  --color-green-pale: #e4ecdb;   /* fond vert pâle */
+  --color-green: #2e7d6b;        /* vert émeraude/algue (accent secondaire) */
+  --color-green-light: #6fb39c;  /* vert clair (accents) */
+  --color-green-pale: #dcf0e7;   /* fond vert pâle (bloc recette) */
 
-  --color-wood: #a5713f;         /* bois clair */
-  --color-wood-dark: #6d4626;    /* bois foncé (CTA principal) */
+  --color-wood: #a5713f;         /* bois clair (accent chaleureux) */
+  --color-wood-dark: #6d4626;    /* bois foncé (CTA principal, contraste chaud sur fond océan) */
   --color-wood-pale: #f0e2cc;    /* fond bois pâle */
 
-  --shadow-soft: 0 10px 30px -12px rgba(31, 42, 36, 0.25);
+  --shadow-soft: 0 10px 30px -12px rgba(11, 59, 74, 0.22);
   --radius: 14px;
   --max-width: 1120px;
 }
@@ -97,8 +97,8 @@ ul { list-style: none; }
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-green);
-  background: var(--color-green-pale);
+  color: var(--color-deep-blue);
+  background: var(--color-blue-light);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 14px;
